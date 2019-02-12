@@ -1,31 +1,37 @@
-# cflow
- 用python实现的高可用可横向扩展的分布式调度系统
+该项目基于[cflow](https://github.com/lanfang/cflow)主体调度系统，做适当修改：
+- kafka->Redis
+- etl_day时间格式yyyy-mm-dd->yyyymmdd
+- 加入web管理调度任务模块，降低使用难度
+
+# goflow
+ 用python实现的高可用可横向扩展的分布式调度系统,并具有可视化操作的功能
 
 # 包含功能
 - 定时调度(类似linux crontab)
 - 依赖调度(满足依赖关系后才会启动任务)
 - 任务格式: 任意命令行可执行程序
 - 高可用，可横向扩展(调度器和执行器均可同时运行多个，完善的重试机制)
+- 可视化操作（基于flask）
 
 # 系统完整流程
-> 调度器获取任务，通过kafka进行任务分发，执行器消费kafka的任务并执行
+> 调度器获取任务，通过Redis进行任务分发，执行器消费Redis的任务并执行
 
 ![scheduler.png](https://github.com/lanfang/cflow/blob/master/docs/scheduler.png)
 
 # 使用方法:
-> cflow命令位于工程目录下
+> goflow命令位于工程目录下
 
-- 安装mysql和etcd，执行 patch.sql
-- 运行调度器: cflow scheduler -c cflow_conf.json --ha
-- 运行执行器(可启多个): cflow executer -c cflow_conf.json
+- 安装mysql和etcd，执行 goflow init_db -c goflow_conf.json
+- 运行调度器: goflow scheduler -c goflow_conf.json --ha
+- 运行执行器(可启多个): goflow executer -c goflow_conf.json
 
 # 配置文件介绍
 > 配置文件为json格式
 ```
 {
   "Common":{
-    "MysqlConn":"mysql://test:test@localhost:3306/cflow", # 数据库地址
-    "Broker":"localhost:9092"   # kafka地址
+    "MysqlConn":"mysql://test:test@localhost:3306/goflow", # 数据库地址
+    "Broker":"localhost:9092"   # kafka地址 也可基于redis
   },
   "Scheduler":{
     "LogDir":"/var/log/go_log", # 日志路径
@@ -46,7 +52,7 @@
 ```
 
 
-# 库表介绍(database: cflow)
+# 库表介绍(database: goflow)
 - cron_conf crontab 配置表，存储定时任务配置
 - loader_result 抽取结果表，存抽取结果，以及worker直接文件同步
 - stat_result 每天的执行结果
@@ -55,51 +61,52 @@
 - task_instance 所有的任务实例, 记录任务的运行状态信息等
 
 
-# 常用命令介绍(cflow)
-## 子命令列表 cflow -h:
+# 常用命令介绍(goflow)
+## 子命令列表 goflow -h:
 ```
 {run,dep,do_all_job,migrate,version,kill,executer,scheduler,init_db} ...
 ```
-## 重跑命令(cflow run)
-### cflow run -h
+## 重跑命令(goflow run)
+### goflow run -h
 ```
 查看参数列表和使用方法
 ```
 
 ## 数据初始化(init_db -c )
-### cflow init_db -c cflow_conf.json
+### goflow init_db -c goflow_conf.json
 ```
 查看参数列表和使用方法
 ```
 
 ### 重跑单个任务(需满足依赖关系)
 ```
-cflow  run -j task_id -d YYYY-MM-DD  
+goflow  run -j task_id -d YYYY-MM-DD  
 ```
 
 ### 重跑单个任务(无需满足依赖)
 ```
-cflow  run -j task_id -d YYYY-MM-DD --force 
+goflow  run -j task_id -d YYYY-MM-DD --force 
 ```
 
 ### 重跑任务以及其后置任务
 ```
-cflow  run -j task_id -d YYYY-MM-DD -down
+goflow  run -j task_id -d YYYY-MM-DD -down
 ```
 
 ### 重跑任务以及其前置任务
 ```
-cflow  run -j task_id -d YYYY-MM-DD -up
+goflow  run -j task_id -d YYYY-MM-DD -up
 ```
   
-sha256:50000$Jxo7TTUK$ecb6d6932891bc1b6853518018605c4273886282372221dabe15c2412813478f
 
- ### www页面处理
+### www页面处理调度任务
 任务操作：
 开始
 强制执行
 重做当前
 重做当前及后续
 强制通过
-
-查看依赖
+### TODO
+1、查看依赖
+2、优化任务触发方式
+3、修复未知bug
