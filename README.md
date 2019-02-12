@@ -23,19 +23,22 @@
 ![web_scheduler.PNG](https://github.com/importer/goflow/raw/master/docs/web_scheduler.PNG)
 ## 任务执行情况及任务操作
 ![TaskRunEdit.PNG](https://github.com/importer/goflow/raw/master/docs/TaskRunEdit.PNG)
+任务操作：
+- 开始
+- 强制执行
+- 重做当前
+- 重做当前及后续
+- 强制通过
+
 ## 任务执行日志输出
 ![TaskRunLog.PNG](https://github.com/importer/goflow/raw/master/docs/TaskRunLog.PNG)
-任务操作：
-开始
-强制执行
-重做当前
-重做当前及后续
-强制通过
+
 
 ### TODO
-1、查看依赖
-2、优化任务触发方式
-3、修复未知bug
+- 查看单个任务依赖关系
+- 优化任务触发方式
+- 修复未知bug
+- 用户权限
 
 # 使用方法:
 > goflow命令位于工程目录下
