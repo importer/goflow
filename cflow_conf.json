@@ -1,0 +1,21 @@
+{
+  "Common":{
+    "MysqlConn":"mysql://root:root@localhost:3306/cflow?charset=utf8",
+    "Broker":"192.168.1.101:9092"
+  },
+  "Scheduler":{
+    "LogDir":"log",
+    "LogFile":"scheduler.log",
+    "FetchInterval":10,
+    "WorkerTimeOut":1111,
+    "RetryQueueimes":4
+  },
+  "Worker": {
+    "LogDir":"log",
+    "LogFile":"executer.log",
+    "Parallelism": 32,
+    "HearteatInterval": 10,
+    "Retry": 3,
+    "TaskTimeOut": 60
+  }
+}

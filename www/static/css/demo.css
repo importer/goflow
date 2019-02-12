@@ -1,0 +1,75 @@
+ #css
+ g.type-suss>rect {
+    fill: #ddefd3;
+  }
+
+  .node text {
+    font-weight: 300;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
+    font-size: 12px;
+    pointer-events: none;
+    text-anchor: middle;
+    fill: white;
+  }
+
+  .label g text tspan:last-child {
+    font-size: 10px;
+    margin-top: 5px;
+    dy: 1.5em;
+  }
+
+  .label g {
+    transform: translate(0, -13px);
+  }
+
+  .node rect {
+    fill: white;
+    stroke-width: 0px;
+    color: white;
+  }
+
+  .edgePath path {
+    stroke: rgb(78, 78, 78);
+    stroke-width: 1px;
+  }
+
+  g.type-init>rect {
+    fill: rgba(0, 91, 252, 0.4);
+  }
+
+  g.type-ready>rect {
+    fill: rgba(0, 91, 252, 0.6);
+  }
+
+  g.type-queue>rect {
+    fill: rgba(0, 91, 252, 0.8);
+  }
+
+  g.type-run>rect {
+    fill: rgba(0, 91, 252, 1);
+  }
+
+  g.type-suss>rect {
+    fill: #F5DEB3;
+  }
+
+  g.type-fail>rect {
+    fill: #E93A3A;
+
+  }
+
+  g.type-freeze>rect {
+    fill: #f2f3f7;
+  }
+
+  g.type-freeze>text {
+    fill: #999999;
+  }
+
+  #myMenu{
+    position: absolute;
+    display: none;
+    width: 100px;
+    height: 100px;
+    background: #999999;
+  }
