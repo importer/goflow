@@ -24,7 +24,7 @@
 ## 任务执行情况及任务操作
 ![TaskRunEdit.PNG](https://github.com/importer/goflow/raw/master/docs/TaskRunEdit.PNG)
 任务操作：
-- 开始
+- 删除
 - 强制执行
 - 重做当前
 - 重做当前及后续
