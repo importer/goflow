@@ -1,11 +1,7 @@
 该项目基于[cflow](https://github.com/lanfang/cflow)主体调度系统，做适当修改：
 - kafka->Redis
 - etl_day时间格式yyyy-mm-dd->yyyymmdd
-<<<<<<< HEAD
 - 加入web管理调度任务模块，降低使用难度
-=======
-- 加入web管理调度任务模块，较低使用难度
->>>>>>> db9b9b2c3ef9bae43bf23049344d857e964bd505
 
 # goflow
  用python实现的高可用可横向扩展的分布式调度系统,并具有可视化操作的功能
@@ -20,31 +16,43 @@
 # 系统完整流程
 > 调度器获取任务，通过Redis进行任务分发，执行器消费Redis的任务并执行
 
-![scheduler.png](https://github.com/lanfang/cflow/blob/master/docs/scheduler.png)
+![scheduler.png](https://github.com/importer/goflow/tree/master/docs/scheduler.png)
+
+# web页面处理调度任务
+## 主界面
+![web_scheduler.PNG](https://github.com/importer/goflow/tree/master/docs/web_scheduler.PNG)
+## 任务执行情况及任务操作
+![TaskRunEdit.PNG](https://github.com/importer/goflow/tree/master/docs/TaskRunEdit.PNG)
+## 任务执行日志输出
+![TaskRunLog.PNG](https://github.com/importer/goflow/tree/master/docs/TaskRunLog.PNG)
+任务操作：
+开始
+强制执行
+重做当前
+重做当前及后续
+强制通过
+
+### TODO
+1、查看依赖
+2、优化任务触发方式
+3、修复未知bug
 
 # 使用方法:
 > goflow命令位于工程目录下
 
-<<<<<<< HEAD
+
 - 安装mysql和etcd，执行 goflow init_db -c goflow_conf.json
 - 运行调度器: goflow scheduler -c goflow_conf.json --ha
 - 运行执行器(可启多个): goflow executer -c goflow_conf.json
-=======
-- 安装mysql和etcd，执行 goflow init_db -c cflow_conf.json
-- 运行调度器: cflow scheduler -c cflow_conf.json --ha
-- 运行执行器(可启多个): cflow executer -c cflow_conf.json
->>>>>>> db9b9b2c3ef9bae43bf23049344d857e964bd505
+
 
 # 配置文件介绍
 > 配置文件为json格式
 ```
 {
   "Common":{
-<<<<<<< HEAD
     "MysqlConn":"mysql://test:test@localhost:3306/goflow", # 数据库地址
-=======
     "MysqlConn":"mysql://test:test@localhost:3306/cflow", # 数据库地址
->>>>>>> db9b9b2c3ef9bae43bf23049344d857e964bd505
     "Broker":"localhost:9092"   # kafka地址 也可基于redis
   },
   "Scheduler":{
@@ -87,11 +95,7 @@
 ```
 
 ## 数据初始化(init_db -c )
-<<<<<<< HEAD
 ### goflow init_db -c goflow_conf.json
-=======
-### goflow init_db -c cflow_conf.json
->>>>>>> db9b9b2c3ef9bae43bf23049344d857e964bd505
 ```
 查看参数列表和使用方法
 ```
@@ -127,8 +131,4 @@ goflow  run -j task_id -d YYYY-MM-DD -up
 ### TODO
 1、查看依赖
 2、优化任务触发方式
-<<<<<<< HEAD
 3、修复未知bug
-=======
-3、修复未知bug
->>>>>>> db9b9b2c3ef9bae43bf23049344d857e964bd505

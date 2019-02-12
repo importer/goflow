@@ -24,7 +24,7 @@ class User(Base):
     """
     用户表
     """
-    __tablename__ = "task_instance_log"
+    __tablename__ = "user"
 
     id = Column(Integer, primary_key=True)
     first_name = Column(String(100))
