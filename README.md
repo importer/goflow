@@ -16,15 +16,15 @@
 # 系统完整流程
 > 调度器获取任务，通过Redis进行任务分发，执行器消费Redis的任务并执行
 
-![scheduler.png](https://github.com/importer/goflow/tree/master/docs/scheduler.png)
+![scheduler.png](https://github.com/importer/goflow/raw/master/docs/scheduler.png)
 
 # web页面处理调度任务
 ## 主界面
-![web_scheduler.PNG](https://github.com/importer/goflow/tree/master/docs/web_scheduler.PNG)
+![web_scheduler.PNG](https://github.com/importer/goflow/raw/master/docs/web_scheduler.PNG)
 ## 任务执行情况及任务操作
-![TaskRunEdit.PNG](https://github.com/importer/goflow/tree/master/docs/TaskRunEdit.PNG)
+![TaskRunEdit.PNG](https://github.com/importer/goflow/raw/master/docs/TaskRunEdit.PNG)
 ## 任务执行日志输出
-![TaskRunLog.PNG](https://github.com/importer/goflow/tree/master/docs/TaskRunLog.PNG)
+![TaskRunLog.PNG](https://github.com/importer/goflow/raw/master/docs/TaskRunLog.PNG)
 任务操作：
 开始
 强制执行
